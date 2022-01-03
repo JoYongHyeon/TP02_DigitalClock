@@ -35,6 +35,7 @@ function timeStart()
     let second = 00;
     let ms     = 00;
 
+    //  업데이트 상황
     setInterval(()=> 
     {
         ms++;
