@@ -1,0 +1,35 @@
+body {
+  background-color: orange;
+  height: 100%;
+}
+
+.wrapper {
+  text-align: center;
+  color: white;
+}
+
+.wrapper p {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#seconds, #tens {
+  font-size: 2em;
+}
+
+.wrapper button {
+  background-color: orange;
+  color: white;
+  /*  solid:테두리를 실선설정, 1px 크기로 흰색 */
+  border: solid 1px white; 
+  /* 모서리 둥글게둥글게~ 좌상단부터 시계방향으로 */
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bolder;
+  width: 180px;
+  height: 55px;
+  margin: 10px;
+  /* mouseover 표시(타겟팅) */
+  cursor: pointer;
+
+}
