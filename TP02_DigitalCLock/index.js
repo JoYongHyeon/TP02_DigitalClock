@@ -69,12 +69,12 @@ function calcTime()
         hh = hh - 12;
         division = division == "PM" ? division = "PM" : division == "AM" ? division = "PM" : division == "AM"; 
     }
-    if(mm > 60)
+    if(mm > 59)
     {
         mm = mm - 60;
         hh++;
     }
-    if(ss > 60)
+    if(ss > 59)
     {
         ss = ss - 60;
         mm++;
