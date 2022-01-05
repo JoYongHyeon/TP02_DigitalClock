@@ -56,7 +56,7 @@ function showTime(hour, minutes, seconds)
 // 한자리 시,분,초 0 삽입
 function addZero(num)
 {
-    return num < 9 ? "0" + num : num;
+    return num < 10 ? "0" + num : num;
 }
 
 // 시간 계산 및 화면 출력
@@ -69,12 +69,12 @@ function calcTime()
         hh = hh - 12;
         division = division == "PM" ? division = "PM" : division == "AM" ? division = "PM" : division == "AM"; 
     }
-    if(mm > 59)
+    if(mm > 60)
     {
         mm = mm - 60;
         hh++;
     }
-    if(ss > 59)
+    if(ss > 60)
     {
         ss = ss - 60;
         mm++;
