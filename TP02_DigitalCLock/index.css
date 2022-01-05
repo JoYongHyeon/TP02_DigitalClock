@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+}
+
+#clock {
+    /* 
+    clock 는 조상 태그 중 position: relative 인 것이 없기 때문에
+    body를 기준으로 가장 오른쪽에 달라 붙어있다.
+    하지만 예를들어 자신을 감싸고있는 <div id="parent">라는 태그가 있다면 그 태그를 중심으로 움직인다.    
+        */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #17d4fe;
+    font-size: 60px;
+    /* 글꼴 설정 속성 */
+    font-family: Orbitron; 
+    /* 글자 사이의 간격(값이 커지면 간격이 커진다, 음수가능) */
+    letter-spacing: 7px;
+}
