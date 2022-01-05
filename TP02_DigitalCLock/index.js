@@ -28,57 +28,76 @@
     <script>에 있는 스크립트가 DOM 조작 관련 로직을 담고 있을 수 있기 때문에 이런 방지책이 만들어 졌다고한다.. 
     따라서 DOMContentLoaded 이벤트 역시 <script> 안에 있는 스크립트가 처리되고 난 후에 발생합니다.
 */
-document.addEventListener("DOMContentLoaded", ()=>{
-    const clock   = new Date();
-    const hour    = clock.getHours();
-    const minutes = clock.getMinutes();
-    const seconds = clock.getSeconds();    
-
-    showTime(hour, minutes, seconds);
-});
 
 // 시, 분, 초, AM or PM(위에서부터)
-let hh;
-let mm;
-let ss;
+let hour;
+let minutes;
+let seconds;
 let division;
-function showTime(hour, minutes, seconds)
-{
-    hh = addZero(hour);
-    mm = addZero(minutes);
-    ss = addZero(seconds);
-    division = hour > 12 ? "PM" : "AM";   
+let clockTag;
 
+document.addEventListener("DOMContentLoaded", ()=>{
+    const clock = new Date();
+    hour        = clock.getHours();
+    minutes     = clock.getMinutes();
+    seconds     = clock.getSeconds();    
+    division    = hour > 12 ? "PM" : "AM";   
+    clockTag = document.getElementById('clock');
     interval = setInterval(calcTime, 1000);
-}
+    // showTime(hour, minutes, seconds);
+});
+
+
+
+// function showTime(hour, minutes, seconds)
+// {
+    // hh = addZero(hour);
+    // mm = addZero(minutes);
+    // ss = addZero(seconds);
+    // interval = setInterval(calcTime, 1000);
+// }
 
     
 // 한자리 시,분,초 0 삽입
-function addZero(num)
-{
-    return num < 10 ? "0" + num : num;
-}
+// function addZero(num)
+// {
+//     return num < 10 ? "0" + num : num;
+// }
 
 // 시간 계산 및 화면 출력
 function calcTime()
 {
-    ss++;
+   
+    seconds++;
     
-    if(hh > 12)
+    if(seconds < 10)
     {
-        hh = hh - 12;
+        seconds = "0" + seconds;
+    }
+    if(seconds > 59)
+    {
+        minutes++;
+        seconds = "00";
+    }
+    if(minutes < 10)
+    {
+        minutes = "0" + minutes;
+    }
+    if(minutes > 59)
+    {
+        hour++;
+        minutes = "00";
+    }
+    if(hour < 10)
+    {
+        hour = "0" + hour;
+    }
+    if(hour > 12)
+    {
+        hour = hour - 12;
         division = division == "PM" ? division = "PM" : division == "AM" ? division = "PM" : division == "AM"; 
     }
-    if(mm > 59)
-    {
-        mm = mm - 60;
-        hh++;
-    }
-    if(ss > 59)
-    {
-        ss = ss - 60;
-        mm++;
-    }
-    let clock = document.getElementById('clock');
-    clock.innerText = hh + ":" + mm + ":" + ss +  division;
+
+    clock.innerText = hour + ":" + minutes + ":" + seconds +  division;
+
 }
